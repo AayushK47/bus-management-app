@@ -1,0 +1,52 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-link cus-active1" href="/dashboard-vehicles-add"><i style="margin-right: 15px;" class="fas fa-car"></i>Add Vehicle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-vehicles-edit"><i style="margin-right: 15px;" class="fas fa-edit"></i>Edit/Modify Vehicle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-vehicles-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Vehicles</a>
+              </li>
+            </ul>
+        </div>
+        <% if(failure && failure.length){ %>
+          <div styles="margin-top:15px;" class="alert alert-danger" role="alert">
+              <%= failure[0] %>
+          </div>
+          <% } %>
+          <% if(success && success.length){ %>
+          <div class="alert alert-success" role="alert">
+              <%= success[0] %>
+          </div>
+          <% } %>
+        <div class="container" style="margin-top: 5%; border: solid 1px #9ea0a3; padding: 20px;">
+          <form action="/vehicles-add" method="POST">
+            <h1 style="text-align: center;">Add Vehicle Details</h1>
+            <input pattern='(([A-Za-z]){2,3}(|-)(?:[0-9]){1,2}(|-)(?:[A-Za-z]){2}(|-)([0-9]){1,4})|(([A-Za-z]){2,3}(|-)([0-9]){1,4})' name="vehicle[regno]" class="form-control" type="text" placeholder="Vehicle Registration Number" required><br>
+            <input name="vehicle[routeno]" class="form-control" type="text" placeholder="Vehicle Route Number" required><br>
+            <select name="vehicle[vtype]" class="form-control" required>
+                <option value="0">Bus</option>
+                <option value="1">Van</option>
+            </select><br>
+            <input name="vehicle[capacity]" class="form-control" type="number" placeholder="Capacity" required><br>
+            <select class="form-control" name="vehicle[institute]" required>
+                <option value="">Select Institute</option>
+                <% ins.forEach(x=>{ %>
+                  <option value="<%=x.id%>"><%= x.short_name %></option>
+              <% }) %>
+            </select><br>
+            <label for="status">Status</label>
+            <input type="radio" name="vehicle[status]" value="1" required>Active
+            <input type="radio" name="vehicle[status]" value="0" required>Inactive<br>
+            <input type="submit" class="btn btn-primary btn-large">
+          </form>
+        </div>
+      </main>
+    </div>
+
+<% include ../../partials/dashboard_footer %>

@@ -1,0 +1,43 @@
+div#login {
+    background-image: url('../img/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center; 
+}
+section#search{
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+main#users{
+    float: left;
+    height: 630px;
+    overflow-y: auto;
+}
+
+.opts{
+    margin: 20px auto;
+}
+html {
+    overflow: hidden;
+}
+
+div.login {
+    background-color: #353535;
+    opacity: 0.6;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 180px;
+    height: 200px;
+}
+
+div.content {
+    opacity: 1;
+}

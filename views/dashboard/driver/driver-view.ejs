@@ -1,0 +1,44 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                <a class="nav-link" href="/dashboard-driver-add"><i style="margin-right: 15px;" class="fas fa-user-plus"></i>Add Driver</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/dashboard-driver-edit"><i style="margin-right: 15px;" class="fas fa-user-edit"></i>Edit/Modify Driver Details</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link cus-active2" href="/dashboard-driver-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Drivers</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container" style="margin: 20px auto;">
+          <table class="table table-striped">
+              <thead>
+                  <th>Institute</th>
+                  <th>Driver Name</th>
+                  <th>Contact</th>
+                  <th>Route No.</th>
+                  <th>Driving License Number</th>
+                  <th>Aadhar Number</th>
+                  <th>Status</th>
+              </thead>
+              <% result.forEach(x=>{ %>
+              <tr>
+                  <td><%= ins[x.institute_id-1] %></td>
+                  <td><%= x.NAME %></td>
+                  <td><%= x.contact %></td>
+                  <td><%= x.route_no %></td>
+                  <td><%= x.dl_number %></td>
+                  <td><%= x.aadhar %></td>
+                  <td><%= status[x.STATUS] %></td>
+              </tr>
+              <% }) %>
+          </table>
+      </div>
+    </main>      
+  </div>
+
+<% include ../../partials/dashboard_footer %>

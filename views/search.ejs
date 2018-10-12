@@ -1,0 +1,69 @@
+<% include partials/header %>
+    <section id="search">
+        <div class="container"  style="margin-top: 5%; border: solid 1px #9ea0a3; padding: 20px;">
+            <h1>Search Bus routes</h1><br>
+            <% if(error) { %>
+            <div id = "alertdiv" class="alert alert-danger">
+                <%= error %>
+            </div>
+            <% } %>
+            <form action="/" method="POST">
+                <input name="routeno" type="text" placeholder="Route No." class="form-control"><br>
+                <input name="stopname" type="text" placeholder="Stop Name" class="form-control"><br>
+                <select name="institute" class="form-control" required>
+                    <option value="">Select Institute</option>
+                    <% ins.forEach(x=>{ %>
+                        <option value="<%= x.id %>"><%= x.short_name %></option>
+                    <% }) %>
+                </select> <br>
+                <input type="submit" value="Search" class="btn btn-primary btn-large"> <br>
+            </form>
+        </div>
+
+        <% if(tab){  if(dtype===2){%>
+        <div class="container" style="margin: 50px auto;">
+            <h1>Search Results</h1>
+            <table class="table table-striped">
+                <thead>
+                    <th>Route No.</th>
+                    <th>Stop Name</th>
+                    <th>Driver Name</th>
+                    <th>Contact</th>
+                    <th>Time</th>
+                </thead>
+                <% tab.forEach(x=>{ %>
+                <tr>
+                    <td><%= x.route_no %></td>
+                    <td><%= x.stop_name %></td>
+                    <td><%= x.NAME %></td>
+                    <td><%= x.contact %></td>
+                    <td><%= x.timing %><td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+                <% }else{ %>
+                    <div class="container" style="margin-top: 20px; border: solid 1px #9ea0a3; padding: 20px;">
+                        <p><label for=""><strong>Route No.</strong></label> : <%= tab[0].route_no %></p>
+                        <p><label for=""><strong>Driver Name</strong></label> : <%= tab[0].NAME %></p>
+                        <p><label for=""><strong>Contact</strong></label> : <%= tab[0].contact %></p>
+                    </div>
+                    <div class="container" style="margin: 50px auto;">
+                            <h1>Search Results</h1>
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Stop Name</th>
+                                    <th>Time</th>
+                                </thead>
+                                <% tab.forEach(x=>{ %>
+                                <tr>
+                                    <td><%= x.stop_name %></td>
+                                    <td><%= x.timing %><td>
+                                </tr>
+                                <% });%>
+                            </table>
+                        </div>
+                <%}}%>
+    </section>
+
+<% include partials/footer %>

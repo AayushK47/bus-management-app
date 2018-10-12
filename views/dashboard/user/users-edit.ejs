@@ -1,0 +1,56 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-users-add"><i style="margin-right: 15px;" class="fas fa-user-plus"></i>Add User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cus-active2" href="/dashboard-users-edit"><i style="margin-right: 15px;" class="fas fa-user-edit"></i>Edit/Modify User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-users-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Users</a>
+              </li>
+            </ul>
+        </div>
+        <% if(failure && failure.length){ %>
+          <div styles="margin-top:15px;" class="alert alert-danger" role="alert">
+              <%= failure[0] %>
+            </div>
+          <% } %>
+          <% if(success && success.length){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success[0] %>
+              </div>
+            <% } %>
+        <div style="border: solid 1px #010101; margin-top:5%; padding-bottom: 20px" class="container">
+          <h1 style="text-align: center;" class="form-group">Edit User Details</h1>
+          <form action="/edit-user" method="POST">
+              <input name="name" class="form-control" type="text" placeholder="Full Name" required><br>
+              <input type="text" class="form-control" name="username" placeholder="Username" required><br>
+              <select class="form-control" name="role" required>
+                <option value="">Select Role</option>
+                <option value="1">Admin</option>
+                <option value="2">Operator</option>
+              </select><br>
+              <input class="form-control" type="email" name="email" placeholder="Email" required><br>
+          <input pattern='^[789]\d{9}$' class="form-control" type="text" name="contact" placeholder="Contact" required><br>
+          <input type="text" pattern="^\d{4}\s\d{4}\s\d{4}$" class="form-control" name="aadhar" placeholder="Aadhar Number" required><br>
+              <select class="form-control" name="institute" required>
+                  <option value="">Select Institute</option>
+                  <% ins.forEach(x=>{ %>
+                    <option value="<%=x.id%>"><%= x.short_name %></option>
+                <% }) %>
+              </select><br>
+              <input name="password" class="form-control" type="password" placeholder="Password" required><br>
+              <label for="status">Status</label>
+              <input name="status" type="radio" name="status" value="1" required>Active
+              <input name="status" type="radio" name="status" value="0" required>Inactive<br>
+              <input class="btn btn-large btn-primary"type="submit">
+          </form>
+        </div>
+      </main>
+    </div>
+
+<% include ../../partials/dashboard_footer %>

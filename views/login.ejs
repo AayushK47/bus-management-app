@@ -1,0 +1,17 @@
+<% include partials/header %>
+    <div id="login">
+        <img  class="center" style="padding-top: 10px;"src="img/logo_sistec.png" alt="sistec logo" title="Sistec Logo">
+        <div class="container card login" style="margin-top:10px; padding:0; width: 40%">
+            <div class="card-header content text-white text-center">
+                <h2>Login</h2>
+            </div>
+            <div class="card-body content" style="margin-top: 10px;">
+                <form action="/login" method="POST">
+                    <input name="username" class="form-control" type="text" placeholder="Username"><br>
+                    <input name="password" class="form-control" type="password" placeholder="Password"><br>
+                    <input class="btn btn-large btn-primary" style="margin-left:auto; margin-right: auto; display:flex;" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+<% include partials/footer %>

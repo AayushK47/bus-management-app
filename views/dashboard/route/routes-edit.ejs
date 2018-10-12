@@ -1,0 +1,62 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-add"><i style="margin-right: 15px;" class="fas fa-road"></i>Add Stop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cus-active2" href="/dashboard-routes-edit"><i style="margin-right: 15px;" class="fas fa-edit"></i>Edit/Modify Stop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Stops</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-del"><i style="margin-right: 15px;" class="fas fa-trash-alt"></i>Remove Stop</a>
+              </li>
+            </ul>
+        </div>
+
+        <% if(failure && failure.length){ %>
+          <div styles="margin-top:15px;" class="alert alert-danger" role="alert">
+              <%= failure[0] %>
+            </div>
+          <% } %>
+          <% if(success && success.length){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success[0] %>
+              </div>
+            <% } %>
+
+        <div class="container" style="margin-top: 5%; border: solid 1px #9ea0a3;">
+          <h1 class="text-center">Edit Stops</h1>
+          <form class="form-group" action="/edit-route" method="POST">
+              <input name="city" type="text" placeholder="City" class="form-control" required><br>
+              <input name="stopname" type="text" placeholder="Stopname" class="form-control" required><br>
+              <select class="form-control" name="routeno" required>
+                <option value="">Select Route Number</option>
+                <% rouno.forEach(x=>{ %>
+                    <option value="<%= x.route_no %>"><%= x.route_no %></option>
+                  <%})%>
+              </select><br>
+              <input name="timing" type="time" placeholder="Timing" class="form-control" required><br>
+              <select class="form-control" name="aadhar" required>
+                <option value="">Select Driver</option>
+                <% drive.forEach(x=>{ %>
+                  <option value="<%= x.aadhar %>"><%= x.name %> - <%= x.contact %></option>
+                  <% }) %>
+              </select><br>
+              <select class="form-control" name="institute" required>
+                <option value="">Select Institute</option>
+                <% ins.forEach(x=>{ %>
+                  <option value="<%=x.id%>"><%= x.short_name %></option>
+              <% }) %>
+              </select><br>
+              <input type="submit" value="Submit" class="btn btn-primary btn-large"><br>
+          </form>
+        </div>
+      </main>
+    </div>
+
+<% include ../../partials/dashboard_footer %>

@@ -1,0 +1,50 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users"role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                <a class="nav-link" href="/dashboard-driver-add"><i style="margin-right: 15px;" class="fas fa-user-plus"></i>Add Driver</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link cus-active2" href="/dashboard-driver-edit"><i style="margin-right: 15px;" class="fas fa-user-edit"></i>Edit/Modify Driver Details</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/dashboard-driver-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Drivers</a>
+                </li>
+            </ul>
+        </div>
+        <% if(failure && failure.length){ %>
+        <div styles="margin-top:15px;" class="alert alert-danger" role="alert">
+            <%= failure[0] %>
+        </div>
+        <% } %>
+        <% if(success && success.length){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success[0] %>
+        </div>
+        <% } %>
+        <div style="border: solid 1px #010101; margin-top:5%; padding-bottom: 20px" class="container">
+          <h1 style="text-align: center;" class="form-group">Edit Driver Details</h1>
+          <form action="/edit-driver" method="POST">
+              <input type="text" name="name" class="form-control" placeholder="Driver Name" required><br>
+              <input pattern='^[789]\d{9}$' type="text" name="contact"  class="form-control" placeholder="Contact" required><br>
+              <select class="form-control" name="institute" required>
+                <option value="">Select Institute</option>
+                <% ins.forEach(x=>{ %>
+                  <option value="<%=x.id%>"><%= x.short_name %></option>
+              <% }) %>
+              </select><br>
+              <input type="text" name="routeno"  class="form-control" placeholder="Route Number" required><br>
+              <input pattern='[A-Z]{2}[0-9]{2}[A-Z]?-[0-9]{4}-[0-9]{7}' type="text" name="dlno"  class="form-control" placeholder="Driving License Number" required><br>
+              <input pattern="^\d{4}\s\d{4}\s\d{4}$" type="text" name="aadhar"  class="form-control" placeholder="Aadhar Number" required><br>
+              <label for="status">Status</label>
+              <input type="radio" name="status" value="1" required> Active
+              <input type="radio" name="status" value="0" required> Inactive <br> 
+              <input type="submit" value="submit" class="btn btn-primary btn-large">
+          </form>
+      </div>
+    </main>      
+  </div>
+
+<% include ../../partials/dashboard_header %>

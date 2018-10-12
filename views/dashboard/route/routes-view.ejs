@@ -1,0 +1,43 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-add"><i style="margin-right: 15px;" class="fas fa-road"></i>Add Stop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-edit"><i style="margin-right: 15px;" class="fas fa-edit"></i>Edit/Modify Stop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cus-active3" href="/dashboard-routes-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Stops</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-routes-del"><i style="margin-right: 15px;" class="fas fa-trash-alt"></i>Remove Stop</a>
+              </li>
+            </ul>
+        </div>
+        <div class="container" style="margin: 20px auto;">
+          <table class="table table-striped">
+              <thead>
+                  <th>Institute</th>
+                  <th>Stopname</th>
+                  <th>City</th>
+                  <th>Route No.</th>
+                  <th>Timing</th>
+              </thead>
+              <% result.forEach(x=>{ %>
+              <tr>
+                  <td><%= ins[x.institute_id-1] %></td>
+                  <td><%= x.stop_name %></td>
+                  <td><%= x.city %></td>
+                  <td><%= x.route_no %></td>
+                  <td><%= x.timing %></td>
+              </tr>
+              <% }) %>
+          </table>
+      </div>
+      </main>
+    </div>
+
+<% include ../../partials/dashboard_footer %>

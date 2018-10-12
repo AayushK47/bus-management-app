@@ -1,0 +1,29 @@
+<% include ../../partials/dashboard_header %>
+
+<main id="users" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" " style="margin-top: 20px; width: 100%;">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-vehicles-add"><i style="margin-right: 15px;" class="fas fa-car"></i>Add Vehicle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-vehicles-edit"><i style="margin-right: 15px;" class="fas fa-edit"></i>Edit/Modify Vehicle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard-vehicles-view"><i style="margin-right: 15px;" class="fas fa-list-ul"></i>View All Vehicles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cus-active4" href="/dashboard-vehicles-del"><i style="margin-right: 15px;" class="fas fa-trash-alt"></i>Remove Vehicles</a>
+              </li>
+            </ul>
+        </div>
+        <div class="container" style="margin: 20px auto;">
+          <h1 class="text-center">Delete Vehicles</h1><br>
+            <form class="form-group" action="/del-vehicle" method="POST">
+                <input name="id" type="text" placeholder="Enter the Id to be deleted" class="form-control" required><br>
+                <input type="submit" value="Submit" class="btn btn-primary btn-large"><br>
+            </form>
+      </main>
+    </div>
+
+<% include ../../partials/dashboard_footer %>
