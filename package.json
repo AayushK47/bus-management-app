@@ -14,7 +14,7 @@
     "url": "https://github.com/AayushK47/bus-management-app"
   },
   "author": "Aayush Kurup",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "",
   "dependencies": {
     "bcrypt": "^3.0.0",
