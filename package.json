@@ -1,3 +1,5 @@
+//JSON file for the bus management app.
+
 {
   "name": "bus-manager-app",
   "version": "1.0.0",
